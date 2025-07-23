@@ -8,7 +8,7 @@ class LengthCheckFixture : public testing::Test
 public:
 	SimilarityCheck SC;
 
-	void checklength(int expected, string a, string b) {
+	void checklengthscore(int expected, string a, string b) {
 		int actual = SC.lengthscore(a, b);
 		EXPECT_EQ(expected, actual);
 	}
@@ -16,23 +16,23 @@ public:
 
 TEST_F(LengthCheckFixture, CheckStrSameLength)
 {
-	checklength(60, "AAA", "AAA");
+	checklengthscore(60, "AAA", "AAA");
 }
 
 TEST_F(LengthCheckFixture, CheckStrSameLengthDiffAlphabat)
 {
-	checklength(60, "ASD", "DSA");
+	checklengthscore(60, "ASD", "DSA");
 }
 
 TEST_F(LengthCheckFixture, CheckStrDiffMorethanDouble)
 {
-	checklength(0, "A", "BB");
+	checklengthscore(0, "A", "BB");
 }
 
 TEST_F(LengthCheckFixture, CheckStrPartScoreCase)
 {
-	checklength(20, "AAABB", "BAA");
-	checklength(30, "AA", "AAE");
+	checklengthscore(20, "AAABB", "BAA");
+	checklengthscore(30, "AA", "AAE");
 }
 
 int main()
