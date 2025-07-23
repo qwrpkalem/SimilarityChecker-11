@@ -3,11 +3,20 @@
 #include "SimilarityCheck.cpp"
 
 
-TEST(LCTS, CheckStrSameLength)
+class LengthCheckFixture : public testing::Test
 {
+public:
 	SimilarityCheck SC;
-	int actual = SC.lengthscore("ABC", "ABC");
-	EXPECT_EQ(actual, 60);
+
+	void checklength(int expected, string a, string b) {
+		int actual = SC.lengthscore("ABC", "ABC");
+		EXPECT_EQ(expected, actual);
+	}
+};
+
+TEST_F(LengthCheckFixture, CheckStrSameLength)
+{
+	checklength(60, "ABC", "ABC");
 }
 
 int main()
