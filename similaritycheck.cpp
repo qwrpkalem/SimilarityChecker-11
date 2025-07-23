@@ -15,6 +15,13 @@ public:
 		else if (2 * a.size() <= b.size()) {
 			return 0;
 		}
+		else if (a.size() > b.size()) {
+			return 20;
+
+		}
+		else if (b.size() > a.size()) {
+			return 40;
+		}
 
 		return -1;
 	}

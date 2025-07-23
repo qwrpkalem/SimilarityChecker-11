@@ -29,6 +29,12 @@ TEST_F(LengthCheckFixture, CheckStrDiffMorethanDouble)
 	checklength(0, "A", "BB");
 }
 
+TEST_F(LengthCheckFixture, CheckStrPartScoreCase)
+{
+	checklength(20, "AAABB", "BAA");
+	checklength(40, "AA", "AAE");
+}
+
 int main()
 {
 	::testing::InitGoogleMock();
