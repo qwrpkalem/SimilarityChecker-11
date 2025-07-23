@@ -9,9 +9,13 @@ public:
 		if (a.size() == b.size()) {
 			return 60;
 		}
-		else if (a == "A") {
+		else if (a.size() >= 2 * b.size()) {
 			return 0;
 		}
+		else if (2 * a.size() <= b.size()) {
+			return 0;
+		}
+
 		return -1;
 	}
 };
