@@ -9,14 +9,24 @@ public:
 	SimilarityCheck SC;
 
 	void checklength(int expected, string a, string b) {
-		int actual = SC.lengthscore("ABC", "ABC");
+		int actual = SC.lengthscore(a, b);
 		EXPECT_EQ(expected, actual);
 	}
 };
 
 TEST_F(LengthCheckFixture, CheckStrSameLength)
 {
-	checklength(60, "ABC", "ABC");
+	checklength(60, "AAA", "AAA");
+}
+
+TEST_F(LengthCheckFixture, CheckStrSameLengthDiffAlphabat)
+{
+	checklength(60, "ASD", "DSA");
+}
+
+TEST_F(LengthCheckFixture, CheckStrDiffMorethanDouble)
+{
+	checklength(0, "A", "BB");
 }
 
 int main()
