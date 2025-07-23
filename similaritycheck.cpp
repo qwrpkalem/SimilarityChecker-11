@@ -4,25 +4,49 @@ using namespace std;
 
 class SimilarityCheck {
 public:
-	int lengthscore(string a, string b)
+	int lengthscore(string str1, string str2)
 	{
-		if (a.size() == b.size()) {
-			return 60;
-		}
-		else if (a.size() >= 2 * b.size()) {
-			return 0;
-		}
-		else if (2 * a.size() <= b.size()) {
-			return 0;
-		}
-		else if (a.size() > b.size()) {
-			return 20;
+		int score = 0;
 
-		}
-		else if (b.size() > a.size()) {
-			return 40;
+		int Gap = GetStrLengthGap(str1.size(), str2.size(), Gap);
+		
+		score = GetLengthScore(Gap, str1.size(), str2.size());
+
+		return score;
+	}
+	int GetLengthScore(int Gap, int length_str1, int length_str2)
+	{
+
+		if (IsSameLength(length_str1, length_str2)) return 60;
+		if (IsLengthMorethanDouble(length_str1, length_str2)) return 0;
+
+		if (length_str1 > length_str2) {
+			return (60 - (Gap * 60 / length_str2));
 		}
 
-		return -1;
+		return (60 - (Gap * 60 / length_str1));
+	}
+
+	int GetStrLengthGap(int length_str1, int length_str2, int& Gap)
+	{
+		int gap = 0;
+		if (length_str1 >= length_str2) {
+			gap = length_str1 - length_str2;
+		}
+		else
+		{
+			gap = length_str2 - length_str1;
+		}
+		return gap;
+	}
+
+private:
+	bool IsSameLength(int length_str1, int length_str2)
+	{
+		return length_str1 == length_str2;
+	}
+	bool IsLengthMorethanDouble(int length_str1, int length_str2)
+	{
+		return length_str1 >= 2 * length_str2 || length_str2 >= 2 * length_str1;
 	}
 };

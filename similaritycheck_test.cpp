@@ -32,7 +32,7 @@ TEST_F(LengthCheckFixture, CheckStrDiffMorethanDouble)
 TEST_F(LengthCheckFixture, CheckStrPartScoreCase)
 {
 	checklength(20, "AAABB", "BAA");
-	checklength(40, "AA", "AAE");
+	checklength(30, "AA", "AAE");
 }
 
 int main()
